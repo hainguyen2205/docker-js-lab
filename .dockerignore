@@ -1,0 +1,10 @@
+.git
+.DS_Store
+.env
+node_modules
+npm-debug.log
+README.md
+Makefile
+docker-compose.yml
+mongodb/data
+redis/data
