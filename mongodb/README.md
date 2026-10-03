@@ -4,7 +4,7 @@ Cấu hình và dữ liệu cho MongoDB service của dự án Sendly.
 
 ## 🚀 Overview
 
-- **Image**: `mongo:8.0`
+- **Image**: `mongo:8.2`
 - **Container Name**: `sendly-mongodb`
 - **Default Port**: `27017`
 

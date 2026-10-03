@@ -1,12 +1,12 @@
 # Sendly — Docker Setup
 
-Môi trường Docker cho dự án **Sendly**. Hiện tại chỉ chạy **MongoDB 8**; nginx và redis đã được chuẩn bị sẵn nhưng đang comment trong `docker-compose.yml` (bật lại khi cần).
+Môi trường Docker cho dự án **Sendly**. Hiện tại chỉ chạy **MongoDB 8.2**; nginx và redis đã được chuẩn bị sẵn nhưng đang comment trong `docker-compose.yml` (bật lại khi cần).
 
 ## 🧩 Services
 
 | Service | Image            | Container        | Port    | Trạng thái           |
 | ------- | ---------------- | ---------------- | ------- | -------------------- |
-| MongoDB | `mongo:8.0`      | `sendly-mongodb` | 27017   | ✅ Đang bật          |
+| MongoDB | `mongo:8.2`      | `sendly-mongodb` | 27017   | ✅ Đang bật          |
 | Nginx   | `nginx:1.28`     | `sendly-nginx`   | 80, 443 | 💤 Comment (dùng sau) |
 | Redis   | `redis:7.4`      | `sendly-redis`   | 6379    | 💤 Comment (dùng sau) |
 
