@@ -3,3 +3,4 @@
 
 .env
 mongodb/data
+redis/data
