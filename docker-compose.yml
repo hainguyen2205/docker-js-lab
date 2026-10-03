@@ -1,34 +1,8 @@
 services:
 
-  nginx:
-    image: nginx:1.27-alpine
-    container_name: jslab-nginx
-    restart: unless-stopped
-    ports:
-        - "${NGINX_HTTP_PORT}:80"
-        - "${NGINX_HTTPS_PORT}:443"
-    volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-        - ./nginx/conf.d:/etc/nginx/conf.d
-        - ./nginx/sites:/etc/nginx/sites
-        - ./nginx/snippets:/etc/nginx/snippets
-        - ./nginx/certs:/etc/nginx/certs
-
-  node:
-    build: ./node
-    container_name: jslab-node
-    working_dir: /workspace
-    volumes:
-        - ${WORKSPACE_PATH}:/workspace
-    ports:
-        - "${NODE_PORT}:3000"
-        - "${VITE_PORT}:5173"
-    tty: true
-    command: tail -f /dev/null
-
   mongodb:
-    image: mongo:7.0
-    container_name: jslab-mongodb
+    image: mongo:8.0
+    container_name: sendly-mongodb
     restart: unless-stopped
     env_file:
       - ./.env
@@ -39,13 +13,3 @@ services:
         - "${MONGO_PORT}:27017"
     volumes:
         - ./mongodb/data:/data/db
-
-  redis:
-    image: redis:7.2-alpine
-    container_name: jslab-redis
-    restart: unless-stopped
-    ports:
-        - "${REDIS_PORT}:6379"
-    volumes:
-        - ./redis/data:/data
-    command: redis-server --appendonly yes

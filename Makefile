@@ -1,7 +1,7 @@
-PROJECT=jslab
+PROJECT=sendly
 COMPOSE=docker compose
 
-.PHONY: up down stop restart build rebuild rebuild-nocache logs ps shell nginx-reload
+.PHONY: up down stop restart logs ps shell
 
 up:
 	$(COMPOSE) up -d
@@ -15,16 +15,6 @@ stop:
 restart:
 	$(COMPOSE) restart
 
-build:
-	$(COMPOSE) build
-
-rebuild:
-	$(COMPOSE) up -d --build
-
-rebuild-nocache:
-	$(COMPOSE) build --no-cache
-	$(COMPOSE) up -d
-
 logs:
 	$(COMPOSE) logs -f
 
@@ -32,7 +22,4 @@ ps:
 	$(COMPOSE) ps
 
 shell:
-	docker exec -it $(PROJECT)-node bash
-
-nginx-reload:
-	docker exec -it $(PROJECT)-nginx nginx -s reload
+	docker exec -it $(PROJECT)-mongodb mongosh -u $${MONGO_ROOT_USERNAME} -p $${MONGO_ROOT_PASSWORD} --authenticationDatabase admin
